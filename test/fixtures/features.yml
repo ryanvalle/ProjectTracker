@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  build_id: 1
+  feature: MyText
+  status: 1
+  details: MyText
+  reference_link: MyText
+  completed_by: MyString
+
+two:
+  build_id: 1
+  feature: MyText
+  status: 1
+  details: MyText
+  reference_link: MyText
+  completed_by: MyString

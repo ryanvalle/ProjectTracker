@@ -1,0 +1,17 @@
+= form_for @new_build, url: add_build_path, data: {remote: true} do |f|
+	= f.text_field :name, placeholder: "Add new version"
+	= f.submit "Create"
+
+.builds
+	- @builds.each do |build|
+		.build
+			.header 
+				.status
+				.title
+					.border
+						= build.name
+
+javascript:
+	$("#new_build").bind('ajax:success', function(evt, data, status, xhr) {
+		$("#build_name").val('')
+	})

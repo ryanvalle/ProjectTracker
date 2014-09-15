@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buildversion: 1
+  release: 2014-09-14
+
+two:
+  buildversion: 1
+  release: 2014-09-14
