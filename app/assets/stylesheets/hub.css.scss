@@ -53,7 +53,7 @@ header {
 			position: relative;
 			.header {
 				width: 100%;
-				margin: 20px 0;
+				margin: 20px 0 0 0 ;
 				position: relative;
 				.status, .title {
 					display: inline-block;
@@ -82,6 +82,30 @@ header {
 					}
 				}
 			}
+		}
+		.features {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: flex;
+			.feature {
+				display: inline-block;
+				width: 100%;
+				p {
+					border-left: 10px solid #FFE39B;
+					padding: 0 0 10px 35px;
+					margin: 0 0 0 36px;
+					&:before {
+						content: ' • ';
+						color: #000;
+					}
+				}
+			}
+		}
+		.add-feature-form {
+			margin: 5px 0 10px 0;
+			padding: 0 0 10px 0;
+			border-bottom: 2px dotted #FFE39B;
 		}
 	}
 }

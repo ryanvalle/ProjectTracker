@@ -10,5 +10,13 @@
 				.title
 					.border
 						= build.name
+			.features
+				.feature
+					- build.features.each do |feature|
+						p =feature.feature
+			.add-feature-form
+				= form_for @new_feature, url: add_feature_path, data: {remote: true} do |f|
+					= f.hidden_field :build_id, value: build.id
+					= f.text_field :feature, placeholder: "Add feature"
 		
 
