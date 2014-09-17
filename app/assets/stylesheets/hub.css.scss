@@ -95,6 +95,21 @@ header {
 					border-left: 10px solid #FFE39B;
 					padding: 0 0 10px 35px;
 					margin: 0 0 0 36px;
+					cursor: pointer;
+				  -webkit-user-select: none; 
+				  -moz-user-select: none;    
+				  -ms-user-select: none;     
+				  -o-user-select: none;
+				  user-select: none;     
+					&.not-started {
+						color: #f00;
+					}
+					&.in-progress{ 
+						color: #B8A200
+					}
+					&.completed {
+						color: #000;
+					}
 					&:before {
 						content: ' • ';
 						color: #000;

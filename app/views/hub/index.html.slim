@@ -13,9 +13,10 @@
 			.features
 				.feature
 					- build.features.each do |feature|
-						p =feature.feature
+						p class="#{status(feature)}" id="feature-#{feature.id}" data-id="#{feature.id}" data-status="#{feature.status}"
+							=feature.feature
 			.add-feature-form
-				= form_for @new_feature, url: add_feature_path, data: {remote: true} do |f|
+				= form_for @new_feature, url: add_feature_path, data: {remote: true}, html: {id: "new_features_#{build.id}"} do |f|
 					= f.hidden_field :build_id, value: build.id
 					= f.text_field :feature, placeholder: "Add feature"
 		

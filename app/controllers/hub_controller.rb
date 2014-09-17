@@ -24,6 +24,15 @@ class HubController < ApplicationController
 		end
 	end
 
+	def update_feature 
+		@update_feature = Feature.find(params[:id])
+		if @update_feature.update(status: params["status"])
+			render json: @update_feature, status: "200"
+		else
+			render json: @update_feature, status: "500"
+		end
+	end
+
 	private
 		def build_params
 			params.require(:build).permit(:name)
