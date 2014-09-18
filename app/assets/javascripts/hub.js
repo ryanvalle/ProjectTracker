@@ -5,8 +5,9 @@ $(function() {
 	})
 
 	$(document).on('ajax:success',"form.new_feature", function(evt, data, status, xhr) {
+		console.log(data)
 		$(this).children("input[type='text']").val('')
-		$(".feature").append("<p class='not-started' id='feature-"+data.id+"'' data-id='"+data.id+"'>" + data.feature + "</p>")
+		$("#feature-"+data.build_id).append("<p class='not-started' id='feature-"+data.id+"'' data-id='"+data.id+"'>" + data.feature + "</p>")
 	})
 
 	$(document).on('click','.feature p',function() {

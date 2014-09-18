@@ -1,7 +1,7 @@
 class HubController < ApplicationController
 	def index
 		@new_build = Build.new
-		@builds = Build.order("created_at DESC")
+		@builds = Build.order(release: :desc)
 
 		@new_feature = Feature.new
 	end
@@ -35,7 +35,7 @@ class HubController < ApplicationController
 
 	private
 		def build_params
-			params.require(:build).permit(:name)
+			params.require(:build).permit(:name, :release)
 		end
 
 		def feature_params
