@@ -7,12 +7,12 @@ $(function() {
 	$(document).on('ajax:success',"form.new_feature", function(evt, data, status, xhr) {
 		console.log(data)
 		$(this).children("input[type='text']").val('')
-		$("#feature-"+data.build_id).append("<p class='not-started' id='feature-"+data.id+"'' data-id='"+data.id+"'>" + data.feature + "</p>")
+		$("#feature-wrap-"+data.build_id).append("<p class='not-started' id='feature-"+data.id+"'' data-id='"+data.id+"'><span class='feature-item'>" + data.feature + "</span><span class='delete'>X</span></p>")
 	})
 
-	$(document).on('click','.feature p',function() {
-		feature_id = $(this).data('id')
-		feature_status = $(this).data('status') ? $(this).data('status') : 0
+	$(document).on('click','.feature p .feature-item',function() {
+		feature_id = $(this).parent().data('id')
+		feature_status = $(this).parent().data('status') ? $(this).parent().data('status') : 0
 		feature_update = feature_status == 2 ? 0 : feature_status+1
 		feature_json = {"id":feature_id,"status":feature_update}
 		$.ajax({
@@ -20,7 +20,6 @@ $(function() {
 			type: "POST",
 			data: feature_json,
 			success: function(data) {
-				console.log(data.id)
 				$('#feature-'+data.id).data('status', data.status)
 				switch (data.status) {
 					case 1:
@@ -33,6 +32,22 @@ $(function() {
 						$('#feature-'+data.id).removeClass().addClass('not-started')
 						break;
 				}
+			},
+			error: function() {
+				console.log("Error posting data")
+			}
+		})
+	})
+
+	$(document).on('click', '.feature p .delete', function() {
+		feature_id = $(this).parent().data('id')
+		feature_json = {"id":feature_id}
+		$.ajax({
+			url: '/remove-feature',
+			type: "POST",
+			data: feature_json,
+			success: function(data) {
+				$('#feature-'+feature_json.id).remove()
 			},
 			error: function() {
 				console.log("Error posting data")

@@ -33,6 +33,15 @@ class HubController < ApplicationController
 		end
 	end
 
+	def remove_feature
+		@remove_feature = Feature.find(params[:id])
+		if @remove_feature.delete
+			render json: @update_feature, status: "200"
+		else
+			render json: "Error deleting content", status: "500"
+		end
+	end
+
 	private
 		def build_params
 			params.require(:build).permit(:name, :release)

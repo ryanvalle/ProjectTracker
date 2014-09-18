@@ -15,10 +15,12 @@
 						| RELEASE 
 						= build.release.strftime("%m/%d/%Y") if build.release.present?
 			.features
-				.feature id="feature-#{build.id}"
+				.feature id="feature-wrap-#{build.id}"
 					- build.features.each do |feature|
 						p class="#{status(feature)}" id="feature-#{feature.id}" data-id="#{feature.id}" data-status="#{feature.status}"
-							=feature.feature
+							span.feature-item
+								=feature.feature
+							span.delete X
 			.add-feature-form
 				= form_for @new_feature, url: add_feature_path, data: {remote: true}, html: {id: "new_features_#{build.id}"} do |f|
 					= f.hidden_field :build_id, value: build.id
