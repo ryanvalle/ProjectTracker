@@ -15,6 +15,16 @@ class HubController < ApplicationController
 		end
 	end
 
+	def update
+		@update_build = Build.find(params[:build][:id])
+		if @update_build.update(name: params[:build][:name], release: params[:build][:release])
+			render json: @update_build, status: "200"
+		else 
+			render json: "Error saving", status: "500"
+		end	
+
+	end
+
 	def add_feature
 		@new_feature = Feature.new(feature_params)
 		if @new_feature.save

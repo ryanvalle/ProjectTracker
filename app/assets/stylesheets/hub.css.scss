@@ -84,6 +84,12 @@ header {
 						font-size: 12px;
 						text-align: right;
 					}
+					.update_form {
+						display: none;
+						input[type="submit"] {
+							display: none;
+						}
+					}
 				}
 			}
 		}

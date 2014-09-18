@@ -8,12 +8,18 @@
 		.build
 			.header 
 				.status
-				.title
+				.title data-id="#{build.id}"
 					.border
 						= build.name
 					.release
 						| RELEASE 
 						= build.release.strftime("%m/%d/%Y") if build.release.present?
+					.update_form id="update-build-#{build.id}"
+						= form_for build, url: update_build_path, data: {remote: true} do |f|
+							= f.hidden_field :id, value: build.id
+							= f.text_field :name, value: build.name
+							= f.date_field :release, value: build.release
+							= f.submit "Update"
 			.features
 				.feature id="feature-wrap-#{build.id}"
 					- build.features.each do |feature|
