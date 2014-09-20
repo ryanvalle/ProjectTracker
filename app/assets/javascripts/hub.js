@@ -16,6 +16,7 @@ $(function() {
 	$(document).on('ajax:success',"form.new_feature", function(evt, data, status, xhr) {
 		$(this).children("input[type='text']").val('')
 		$("#feature-wrap-"+data.build_id).append("<p class='not-started' id='feature-"+data.id+"'' data-id='"+data.id+"'><span class='feature-item'>" + data.feature + "</span><span class='delete'>X</span></p>")
+		processPercents()
 	})
 
 
@@ -41,6 +42,7 @@ $(function() {
 						$('#feature-'+data.id).removeClass().addClass('not-started')
 						break;
 				}
+				processPercents();
 			},
 			error: function() {
 				console.log("Error posting data")
@@ -57,10 +59,32 @@ $(function() {
 			data: feature_json,
 			success: function(data) {
 				$('#feature-'+feature_json.id).remove()
+				processPercents()
 			},
 			error: function() {
 				console.log("Error posting data")
 			}
 		})
 	})
+})
+
+function processPercents() {
+	$('.builds').each(function(){
+		$(this).find('.build').each(function(){
+			total_items = $(this).find('.features .feature p').length
+			possible_score = total_items * 2
+			not_started_score = $(this).find('.features .feature p.not-started').length * 0
+			in_progress_score = $(this).find('.features .feature p.in-progress').length * 1
+			completed_score = $(this).find('.features .feature p.completed').length * 2
+			total_score = Math.floor( ( (not_started_score + in_progress_score + completed_score) / possible_score ) * 100)
+			return_score = isNaN(total_score) ? 0 : total_score;
+			$(this).find('.status .status-bar').animate({
+				height: return_score+'%'
+			}, 500)
+		})
+	})
+}
+
+$(document).ready(function() {
+	processPercents()
 })

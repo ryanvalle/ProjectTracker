@@ -67,6 +67,16 @@ header {
 					height: 60px;
 					border: 10px solid #FFE39B;
 					border-radius: 75px;
+					position: relative;
+					overflow: hidden;
+					background: #FF6E6E;
+					.status-bar {
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						height: 0%;
+						background-color: #006F00;
+					}
 				}
 				.title {
 					font-size: 24px;
