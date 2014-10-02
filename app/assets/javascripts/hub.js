@@ -12,6 +12,11 @@ $(function() {
 		})
 	})
 
+	$(document).on('click','.status',function() {
+		$(this).parent().parent().find('.features').css('display','flex')
+		$(this).parent().parent().find('.add-feature-form').show()
+		
+	})
 
 	$(document).on('ajax:success',"form.new_feature", function(evt, data, status, xhr) {
 		$(this).children("input[type='text']").val('')
@@ -81,6 +86,9 @@ function processPercents() {
 			$(this).find('.status .status-bar').animate({
 				height: return_score+'%'
 			}, 500)
+			if (return_score < 100) {
+				$(this).find('.features').attr('style','display:flex')
+			}
 		})
 	})
 }

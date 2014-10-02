@@ -70,6 +70,7 @@ header {
 					position: relative;
 					overflow: hidden;
 					background: #FF6E6E;
+					z-index: 1;
 					.status-bar {
 						position: absolute;
 						bottom: 0;
@@ -107,7 +108,7 @@ header {
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			box-sizing: border-box;
-			display: flex;
+			display: none;
 			.feature {
 				display: inline-block;
 				width: 100%;
@@ -141,6 +142,7 @@ header {
 			margin: 5px 0 10px 0;
 			padding: 0 0 10px 0;
 			border-bottom: 2px dotted #FFE39B;
+			display: none;
 		}
 	}
 }
