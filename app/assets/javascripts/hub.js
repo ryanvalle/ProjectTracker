@@ -88,6 +88,7 @@ function processPercents() {
 			}, 500)
 			if (return_score < 100) {
 				$(this).find('.features').attr('style','display:flex')
+				$(this).find('.add-feature-form').show()
 			}
 		})
 	})
