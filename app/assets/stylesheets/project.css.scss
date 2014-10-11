@@ -1,0 +1,132 @@
+#project_index {
+	p {
+		padding-top: 0;
+	}
+	.large_btn {
+		button {
+			width: 100%;
+			border: 0;
+			padding: 10px 0;
+			font-weight: 800;
+			text-transform: uppercase;
+			font-size: 32px; 
+			color: #304B3C;
+			border-radius: 17px;
+			background: rgba(161, 147, 0, 0.1);
+			border: 2px solid #304B3C;
+			cursor: pointer;
+			&:hover {
+				background: rgba(161, 147, 0, 0.2);
+			}
+		}
+	}
+
+	.projects {
+		text-align: center;
+		border-top: 1px solid #304B3C;
+		padding: 10px 0;
+		margin: 20px 0 ;
+		h5 {
+			padding: 0;
+			margin: 0;
+		}
+		.build {
+			border: 2px solid #304B3C;
+			padding: 10px 0;
+			margin: 10px 0;
+			border-radius: 20px;
+			a {
+				text-decoration: none;
+				&.name {
+					font-weight: 800;
+					color: #304B3C;
+					text-transform: uppercase;
+					font-size: 20px;
+					display: block;
+				}
+			}
+			a:hover {
+				color: #106F3A;
+			}
+			.changelog-link, .edit-link {
+				color: #8E8E8E;
+				&:hover {
+					color: #106F3A;
+				}
+			}
+			p {
+				margin: 0;
+				padding: 0;
+				&.url {
+					font-size: 14px;
+					.env {
+						text-transform: uppercase;
+						font-style: italic;
+						font-size: 12px;
+						color: #8E8E8E;
+					}
+					span.url {
+						font-size: 14px;
+						font-weight: 800;
+						a {
+							text-decoration: none;
+							color: #304b3c;
+							&:hover {
+								color: #106F3A;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#project_add {
+	h1 {
+		padding: 0;
+		margin: 0;
+	}
+	p.subtext {
+		padding: 0;
+		margin: 0;
+		font-size: 12px;
+	}
+	form {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		input {
+			outline: 0;
+			padding: 5px;
+			border: 0;
+		}
+		.fieldgrp {
+			padding: 4px 0;
+			display: -webkit-flex;
+			display: flex;
+			label{ flex: 1; -webkit-flex: 1; padding: 4px 0;}
+			input { flex: 2; -webkit-flex: 2; padding: 4px;}
+		}
+		input[type="submit"] {
+			flex: 1;
+			cursor: pointer;
+			font-weight: 600;
+			text-transform: uppercase;
+			background: #FFDC92;
+		}
+	}
+
+	.delete-project {
+		position: relative;
+		top: 20px;
+		button {
+			background: #f00;
+			width: 100%;
+			border: 0;
+			color: #FFF;
+			font-weight: 800;
+			font-size: 20px;
+		}
+	}
+}

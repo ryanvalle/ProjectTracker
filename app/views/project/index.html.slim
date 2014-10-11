@@ -1,0 +1,19 @@
+#project_index
+	= link_to create_project_path, class: 'large_btn' do
+		button Create a Project
+
+	= render "layouts/notice"
+	.projects
+		-if @projects.present?
+			h5 SELECT A PROJECT BELOW TO VIEW THEIR CHANGE LOG
+			- @projects.each do |p|
+				.build
+					= link_to p.name, build_path(id: p.id), class: "name"
+					- Hash["production url" => p.prod_url, "stage url" => p.stage_url, "qa url" => p.qa_url, "dev url" => p.dev_url, "git repository" => p.git_url].each do |env, addr|
+						- unless addr.blank?
+							p.url
+								span.env #{env}: 
+								span.url =link_to addr, "http://#{addr}", target: 'blank'
+					= link_to "see changelog", build_path(id: p.id), class: "changelog-link"
+					span  | 
+					= link_to "edit details", edit_project_path(p.id), class: "edit-link"

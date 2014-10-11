@@ -1,9 +1,16 @@
 class HubController < ApplicationController
 	def index
+		@project = Project.find(params[:id])
 		@new_build = Build.new
-		@builds = Build.order(release: :desc)
+		@builds = @project.builds.order(release: :desc)
 
 		@new_feature = Feature.new
+	end
+
+	def show
+		@build = Build.find(params[:id])
+		@project = @build.project
+		@features = @build.features
 	end
 
 	def add
@@ -22,7 +29,6 @@ class HubController < ApplicationController
 		else 
 			render json: "Error saving", status: "500"
 		end	
-
 	end
 
 	def add_feature
@@ -54,7 +60,7 @@ class HubController < ApplicationController
 
 	private
 		def build_params
-			params.require(:build).permit(:name, :release)
+			params.require(:build).permit(:name, :release, :project_id)
 		end
 
 		def feature_params

@@ -13,8 +13,15 @@ $(function() {
 	})
 
 	$(document).on('click','.status',function() {
-		$(this).parent().parent().find('.features').css('display','flex')
-		$(this).parent().parent().find('.add-feature-form').show()
+		if ($(this).data('view') == 0) {
+			$(this).parent().parent().find('.features').css('display','flex')
+			$(this).parent().parent().find('.add-feature-form').show()
+			$(this).data('view',1)
+		} else {
+			$(this).parent().parent().find('.features').css('display','none')
+			$(this).parent().parent().find('.add-feature-form').hide()
+			$(this).data('view',0)
+		}
 		
 	})
 
@@ -31,7 +38,7 @@ $(function() {
 		feature_update = feature_status == 2 ? 0 : feature_status+1
 		feature_json = {"id":feature_id,"status":feature_update}
 		$.ajax({
-			url: '/update-feature',
+			url: '/build/update-feature',
 			type: "POST",
 			data: feature_json,
 			success: function(data) {
@@ -59,7 +66,7 @@ $(function() {
 		feature_id = $(this).parent().data('id')
 		feature_json = {"id":feature_id}
 		$.ajax({
-			url: '/remove-feature',
+			url: '/build/remove-feature',
 			type: "POST",
 			data: feature_json,
 			success: function(data) {
@@ -89,6 +96,7 @@ function processPercents() {
 			if (return_score < 100) {
 				$(this).find('.features').attr('style','display:flex')
 				$(this).find('.add-feature-form').show()
+				$(this).find('.status').attr('data-view','1')
 			}
 		})
 	})

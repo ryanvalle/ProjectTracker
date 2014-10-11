@@ -1,0 +1,28 @@
+#project_add
+	h1 Create a Project
+	p.subtext
+		em Exclude http:// from optional URLs below
+	= render "layouts/notice"
+	= form_for @new_project, url: add_project_path do |f|
+		.fieldgrp
+			= f.label :name
+			= f.text_field :name
+		.fieldgrp
+			= f.label :prod_url
+			= f.text_field :prod_url
+		.fieldgrp
+			= f.label :stage_url
+			= f.text_field :stage_url
+		.fieldgrp
+			= f.label :qa_url
+			= f.text_field :qa_url
+		.fieldgrp
+			= f.label :dev_url
+			= f.text_field :dev_url
+		.fieldgrp
+			= f.label :git_url
+			= f.text_field :git_url
+		.fieldgrp
+			= f.submit "Create"
+			
+

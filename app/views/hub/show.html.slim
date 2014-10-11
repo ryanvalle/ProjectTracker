@@ -1,0 +1,30 @@
+#hub-summary
+	.return-to-home
+		= link_to "<< return to home", project_path	
+	.project-name
+		p APPLICATION CHANGE LOG FOR:
+		h1  #{@project.name}
+	.project-version
+		p VERSION CHANGE LOG:
+		h1 #{@build.name}
+	.project-version
+		p TARGET DEPLOY DATE:
+		h3 #{@build.release.strftime("%m/%d/%Y")}
+
+	.build
+		p CHANGE LOG DETAILS:
+		table cellspacing='0'
+			thead
+				tr
+					td.status STATUS
+					td.feature FEATURE
+			tbody
+				- @features.each do |feature|
+					tr
+						=status_with_text(feature)
+						td.feature.details #{feature.feature}
+						
+	.return-to-home
+		= link_to "<< return to status page", build_path(@project)	
+
+

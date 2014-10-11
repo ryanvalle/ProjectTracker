@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  prod_url   :string(255)
+#  stage_url  :string(255)
+#  qa_url     :string(255)
+#  dev_url    :string(255)
+#  git_url    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  prod_url: MyString
+  stage_url: MyString
+  qa_url: MyString
+  dev_url: MyString
+  git_url: MyString
+
+two:
+  name: MyString
+  prod_url: MyString
+  stage_url: MyString
+  qa_url: MyString
+  dev_url: MyString
+  git_url: MyString

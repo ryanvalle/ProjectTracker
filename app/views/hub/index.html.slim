@@ -1,36 +1,44 @@
-= form_for @new_build, url: add_build_path, data: {remote: true} do |f|
-	= f.text_field :name, placeholder: "Add new version"
-	= f.date_field :release
-	= f.submit "Create"
+#hub
+	.project-name
+		h1  =@project.name
+	.return-to-home
+		= link_to "<< return to home", project_path
+	= form_for @new_build, url: add_build_path, data: {remote: true} do |f|
+		= f.hidden_field :project_id, value: @project.id
+		= f.text_field :name, placeholder: "Add new version"
+		= f.date_field :release
+		= f.submit "Create"
 
-.builds
-	- @builds.each do |build|
-		.build
-			.header 
-				.status
-					.status-bar
-				.title data-id="#{build.id}"
-					.border
-						= build.name
-					.release
-						| RELEASE 
-						= build.release.strftime("%m/%d/%Y") if build.release.present?
-					.update_form id="update-build-#{build.id}"
-						= form_for build, url: update_build_path, data: {remote: true} do |f|
-							= f.hidden_field :id, value: build.id
-							= f.text_field :name, value: build.name
-							= f.date_field :release, value: build.release
-							= f.submit "Update"
-			.features
-				.feature id="feature-wrap-#{build.id}"
-					- build.features.each do |feature|
-						p class="#{status(feature)}" id="feature-#{feature.id}" data-id="#{feature.id}" data-status="#{feature.status}"
-							span.feature-item
-								=feature.feature
-							span.delete X
-			.add-feature-form
-				= form_for @new_feature, url: add_feature_path, data: {remote: true}, html: {id: "new_features_#{build.id}"} do |f|
-					= f.hidden_field :build_id, value: build.id
-					= f.text_field :feature, placeholder: "Add feature"
-		
+	.builds
+		- @builds.each do |build|
+			.build
+				.header  
+					.status data-view="0"
+						.status-bar
+					.title data-id="#{build.id}"
+						.border
+							= build.name
+						.release
+							| RELEASE 
+							= build.release.strftime("%m/%d/%Y") if build.release.present?
+							|  || 
+							= link_to "SEE PAGE", show_build_path(build.id)
+						.update_form id="update-build-#{build.id}"
+							= form_for build, url: update_build_path, data: {remote: true} do |f|
+								= f.hidden_field :id, value: build.id
+								= f.text_field :name, value: build.name
+								= f.date_field :release, value: build.release
+								= f.submit "Update"
+				.features
+					.feature id="feature-wrap-#{build.id}"
+						- build.features.each do |feature|
+							p class="#{status(feature)}" id="feature-#{feature.id}" data-id="#{feature.id}" data-status="#{feature.status}"
+								span.feature-item
+									=feature.feature
+								span.delete X
+				.add-feature-form
+					= form_for @new_feature, url: add_feature_path, data: {remote: true}, html: {id: "new_features_#{build.id}"} do |f|
+						= f.hidden_field :build_id, value: build.id
+						= f.text_field :feature, placeholder: "Add feature"
+			
 

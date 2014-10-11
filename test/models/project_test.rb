@@ -1,18 +1,21 @@
 # == Schema Information
 #
-# Table name: builds
+# Table name: projects
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  release    :date
+#  prod_url   :string(255)
+#  stage_url  :string(255)
+#  qa_url     :string(255)
+#  dev_url    :string(255)
+#  git_url    :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  project_id :integer
 #
 
 require 'test_helper'
 
-class BuildTest < ActiveSupport::TestCase
+class ProjectTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

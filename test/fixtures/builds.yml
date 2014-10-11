@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: builds
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  release    :date
+#  created_at :datetime
+#  updated_at :datetime
+#  project_id :integer
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
