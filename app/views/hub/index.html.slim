@@ -1,3 +1,5 @@
+#navigation
+	= raw @projects.map {|project| link_to_unless_current project.name, build_path(project) }.join(" | ")
 #hub
 	.project-name
 		h1  =@project.name

@@ -1,5 +1,6 @@
 class HubController < ApplicationController
 	def index
+		@projects = Project.all
 		@project = Project.find(params[:id])
 		@new_build = Build.new
 		@builds = @project.builds.order(release: :desc)
