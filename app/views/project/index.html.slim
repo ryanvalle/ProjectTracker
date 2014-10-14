@@ -13,7 +13,7 @@
 						- unless addr.blank?
 							p.url
 								span.env #{env}: 
-								span.url =link_to addr, "http://#{addr}", target: 'blank'
+								span.url =link_to addr, "#{addr}", target: 'blank'
 					= link_to "see changelog", build_path(id: p.id), class: "changelog-link"
 					span  | 
 					= link_to "edit details", edit_project_path(p.id), class: "edit-link"
