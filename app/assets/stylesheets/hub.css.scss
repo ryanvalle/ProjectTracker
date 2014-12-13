@@ -48,6 +48,9 @@ header {
 	form {
 		margin: 0;
 		padding: 0;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: -moz-flex;
 		display: flex;
 		width: 100%;
 		input {
@@ -56,10 +59,16 @@ header {
 			border: 0;
 		}
 		input[type="text"] {
+			-webkit-flex: 2;
+			-moz-flex: 2;
+			-ms-flex: 2;
 			flex: 2;
 			margin: 0 4px;
 		}
 		input[type="submit"] {
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			-moz-flex: 1;
 			flex: 1;
 			margin: 0 4px;
 			cursor: pointer;

@@ -14,6 +14,9 @@ $(function() {
 
 	$(document).on('click','.status',function() {
 		if ($(this).data('view') == 0) {
+			$(this).parent().parent().find('.features').css('display','-webkit-flex')
+			$(this).parent().parent().find('.features').css('display','-ms-flex')
+			$(this).parent().parent().find('.features').css('display','-moz-flex')
 			$(this).parent().parent().find('.features').css('display','flex')
 			$(this).parent().parent().find('.add-feature-form').show()
 			$(this).data('view',1)
@@ -94,7 +97,7 @@ function processPercents() {
 				height: return_score+'%'
 			}, 500)
 			if (return_score < 100) {
-				$(this).find('.features').attr('style','display:flex')
+				$(this).find('.features').attr('style','display:-ms-flex;display:-webkit-flex; display:-moz-flex; display:flex;')
 				$(this).find('.add-feature-form').show()
 				$(this).find('.status').attr('data-view','1')
 			}
